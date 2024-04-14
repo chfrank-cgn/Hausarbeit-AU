@@ -3,53 +3,53 @@
 %
 
 \pagebreak
-\section{Data Source and Wrangling}
+\section{NIS2}
 
 \onehalfspacing
 
-\subsection{Data Source}
+\subsection{The Network and Information Security Directive}
 
-\subsubsection{The Group}
+\subsection{Center for Internet Security}
 
-\subsubsection{The Blog}
+\subsubsection{CIS Controls}
+
+\subsubsection{CIS Benchmarks}
 
 \subsubsection{Social Media and Loneliness}
 
 According to a recent study conducted by the American Psychological Association, social distancing over an extended period can increase loneliness and significantly affect people's health.\footnote{See \textit{Luchetti, M. (2020)}: The trajectory of loneliness in response to COVID-19. \cite{apaLoneliness}}
 
-\subsubsection{Hate Speech}
+\subsection{Rancher}
 
-\subsubsection{Ableism}
+\begin{figure}[H]
+\centering
+\caption {Rancher Dashboard}
+\includegraphics[width=\linewidth]{images/rancher-dashboard.png}
+\label{fig:rancherDashboard}
+\end{figure}
 
-\subsubsection{Climate Anxiety}
+\subsubsection{CIS Benchmarks}
 
-\subsection{Web Traffic Analysis}
+\subsubsection{CIS Benchmarks Installation}
 
-\subsubsection{Web Traffic KPIs}
+\begin{lstlisting}[caption=Installing CIS, frame=single, basicstyle=\ttfamily]
+# CIS Benchmarks
+resource "rancher2_app_v2" "cisbench_fom" {
+  lifecycle {
+    ignore_changes = all
+  }
+  cluster_id = rancher2_cluster.cluster_fom.id
+  name = "rancher-cis-benchmark"
+  namespace = "cis-operator-system"
+  project_id = data.rancher2_project.system.id
+  repo_name = "rancher-charts"
+  chart_name = "rancher-cis-benchmark"
+  chart_version = var.cischart
+}
 
-\subsubsection{Data Collection}
-
-\subsection{Data Wrangling}
-
-\subsubsection{Original Columns}
-
-We have six files in total. First, let's have a look at each of the files' contents and the original columns.
-
-The wp-comments table holds all information pertaining to comments, which will greatly help us in evaluating engagement with the individual posts.
-\begin{lstlisting}[caption=wp-comments, frame=single, basicstyle=\ttfamily]
-"comment-ID", "comment-post-ID", "comment-author", 
-"comment-author-email", "comment-author-url", 
-"comment-author-IP", "comment-date", "comment-date-gmt", 
-"comment-content", "comment-approved", "comment-parent", 
-"comment-type", "user-id", "comment-alter-id", 
-"meta:ct-checked", "meta:ct-checked-now", "meta:ct-bad", 
-"meta:ct-hash", "meta:akismet-result", 
-"meta:akismet-history", "meta:akismet-as-submitted"
 \end{lstlisting}
 
-\subsubsection{Removing PII}
-
-There's quite a lot of personally identifiable information in these tables that I will remove before starting the analysis:
+\subsubsection{CIS Benchmark Reports}
 
 \begin{itemize}
  \item wp-admin: The information in this table is only affecting me as the author of the paper, so no change is necessary
@@ -59,41 +59,3 @@ There's quite a lot of personally identifiable information in these tables that 
  \item wp-visit: The table has no personally identifiable information
  \item wp-visitor: I'll remove all information, including IP Address, that could potentially identify the visitor
 \end{itemize}
-
-Removing columns from CSV files is an easy task for any spreadsheet program.
-
-\subsubsection{GDPR Compliance}
-
-\subsubsection{Removing Spam}
-
-To do this I use the shell and filter approximately 18000 page impressions:
-
-\begin{lstlisting}[caption=Removing Spam, frame=single, basicstyle=\ttfamily]
-$ wc -l wp-visitor-2021-04-05.csv
-68027 wp-visitor-2021-04-05.csv
-
-$ fgrep -e "DE" wp-visitor-2021-04-05.csv | wc -l
-49883
-
-$ fgrep -e "AT" wp-visitor-2021-04-05.csv | wc -l
-519
-
-$ fgrep -e "CH" wp-visitor-2021-04-05.csv | wc -l
-264
-
-$ fgrep -e "CH" -e "AT" -e "DE" wp-visitor-2021-04-05.csv \
-  > wp-visitor-2021-04-05-nospam.csv
-
-$ wc -l wp-visitor-2021-04-05-nospam.csv 
-50564 wp-visitor-2021-04-05-nospam.csv
-\end{lstlisting}
-
-\subsubsection{Count Data Notebook}
-
-\begin{figure}[H]
-\centering
-\caption {Database Tables}
-\includegraphics[width=\linewidth]{images/tables.png}
-\label{fig:tablesCount}
-\end{figure}
-
