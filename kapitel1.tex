@@ -7,20 +7,57 @@
 
 \onehalfspacing
 
-\subsection{NIS2 and CIS Benchmarks}
+\subsection{Cyber Security}
+
+Cybersecurity, also called information security or IT security, is the practice of protecting systems, networks, and programs from digital attacks. It aims to reduce the risk of these attacks and prevent the unauthorized exploitation of systems, networks, and technology.
+
+Cybersecurity is an ongoing process because threats and attack vectors are constantly evolving. Organizations and individuals must proactively implement security measures and stay up-to-date on the latest threats.\footnote{See \textit{Gemini (2024)}: What is Cyber Security. \cite{bardCybersec}}
+
+\subsection{NIS2}
+
+NIS2, which stands for Network and Information Systems Directive II, is the EU's legislative act to strengthen cybersecurity across the European Union. It's essentially an update to the original NIS Directive implemented in 2016.
+
+It sets stricter requirements for various sectors to improve security for essential entities. These entities include organizations in critical sectors like energy, transport, waste management, healthcare, and digital infrastructure providers.
+
+Compared to the original directive, NIS2 applies to a broader range of businesses and organizations; it recognizes the importance of securing the supply chain and includes measures to address vulnerabilities in third-party vendors and suppliers.
+
+It also emphasizes a risk-based approach to cybersecurity. Organizations must identify and assess their security risks and implement appropriate mitigation measures.
 
 NIS2 entered into force on 16 January 2023, and the Member States now have 21 months, until 17 October 2024, to transpose its measures into national law.\footnote{See \textit{Negreiro-Achiaga, M. (2023)}: The NIS2 Directive. \cite{nisBrief}}
 
+\subsection{CIS Controls and Benchmarks}
+
+CIS Controls, or CIS Critical Security Controls, are a prioritized set of best practices designed to improve an organization's cybersecurity posture. Developed by the \href{https://www.cisecurity.org/}{Center for Internet Security} (CIS), a non-profit organization, these controls are a widely trusted framework for defending against cyberattacks.\footnote{See \textit{CIS (2024)}: Critical Security Controls. \cite{cisControls}}
+
+CIS Benchmarks are configuration guides intended to harden various IT systems against cyberattacks based on the CIS' Critical Security Controls. They provide a set of best practices for securing specific operating systems, applications, and cloud platforms. Many of these Benchmarks have specific versions tied to the underlying software version.\footnote{See \textit{CIS (2024)}: Benchmark List. \cite{cisBenchmarks}}
+
+Several platform vendors provide automated tools to check against these benchmarks and report and enforce compliance as a first line of defense.\footnote{See \textit{Rancher (2024)}: CIS Scans. \cite{rancherBenchmarks}}
+
 \subsection{Kubernetes}
 
-Kubernetes 1.30
+Kubernetes, or K8s, is an open-source system designed to automate deploying, scaling, and managing applications built using containers. Containers package software in a standardized unit that includes all dependencies the software needs to run, like code, libraries, and settings. This makes them portable and efficient.
+
+Kubernetes helps manage these containers by grouping them logically. This makes it easier to track and manage complex applications with many containers. The original inspiration for Kubernetes came from Google's internal container orchestration system, Borg.\footnote{See \textit{Gemini (2024)}: What is Kubernetes. \cite{bardKubernetes}} 
+
+In 2015, Kubernetes reached the 1.0 milestone, and in 2016, it was donated to the CNCF; the current release of Kubernetes is 1.30.
+
+"For the people who built it, for the people who release it, and for the furries who keep all of our clusters online, we present to you Kubernetes v1.30: Uwubernetes, the cutest release to date."\footnote{\textit{Dsouza, A. (2024)}: Kubernetes 1.30. \cite{uwubernetes}}
 
 \begin{figure}[H]
 \centering
 \caption {Kubernetes 1.30 Release Logo}
-\includegraphics[width=\linewidth]{images/k8s-1.30.png}
+\includegraphics[width=0.3\linewidth]{images/k8s-1.30.png}
 \label{fig:uwubernetes}
 \end{figure}
+
+
+\subsection{Research Question \& Method}
+
+This paper will examine the new NIS2 security standards, compare them to the current CIS controls, and attempt to map them. Once we've established a helpful relationship, we will evaluate using CSI benchmarks to check Kubernetes clusters for compliance. We will also check whether CIS Benchmarks can provide information about the level of compliance for Kubernetes clusters and offer actionable insights into reaching NIS2 compliance.
+
+To do this, we will perform an Experiment and cross-check the findings of several CIS Benchmarks on random clusters against manual evaluation.\footnote{See \textit{Genau, L. (2020)}: Ein Experiment in deiner Abschlussarbeit durchführen. \cite{expScribbr}}
+
+The goal is to establish whether CIS Benchmark results can indicate whether a Kubernetes cluster might be NIS2-compliant as a platform.
 
 \subsection{Gender-neutral Pronouns}
 
@@ -30,10 +67,6 @@ In this paper, I'll attempt to follow this suggestion and invite all my readers 
 
 If you're not sure about the definitions of gender and sex and how to use them, have a look at the definitions\footnote{See \textit{APA (2021)}: Definitions Related to Sexual Orientation. \cite{apaDefinitions}} by the American Psychological Association.
 
-\subsection{Online Learning and Loneliness}
+\subsection{Caveat: Online Learning and Loneliness}
 
-According to a recent study conducted by the American Psychological Association, social distancing over an extended period can increase loneliness and significantly affect people's health.\footnote{See \textit{Luchetti, M. (2020)}: The trajectory of loneliness in response to COVID-19. \cite{apaLoneliness}}
-
-\subsection{Methodology \& Research Question}
-
-Peerforming an Experiment.\footnote{See \textit{Genau, L. (2020)}: Ein Experiment in deiner Abschlussarbeit durchführen. \cite{expScribbr}}
+According to a recent study conducted by the American Psychological Association, social distancing and online learning over an extended period can increase loneliness and significantly affect people's health.\footnote{See \textit{Luchetti, M. (2020)}: The trajectory of loneliness in response to COVID-19. \cite{apaLoneliness}}
