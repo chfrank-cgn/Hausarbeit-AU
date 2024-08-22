@@ -7,44 +7,83 @@
 
 \onehalfspacing
 
-\subsection{Mapping between CIS Controls v8 and NIS2}
+\subsection{NIS2 Article 21}
 
-\subsubsection{Inventory and Control of Enterprise Assets}
+The NIS2 directive itself is a legal document organized into Chapters and Articles. It has a pan-European scope and targets critical businesses. Much of the content concerns reporting requirements and EU-wide cooperation and institutions, which we will not cover in this paper.\footnote{See \textit{EU (2022)}: NIS2 Directive. \cite{nis2}}
 
-\subsubsection{Inventory and Control of Software Assets}
+Article 21, however, defines the required Cybersecurity risk-management measures for critical infrastructure. In paragraph 2, point (g), NIS2 calls for basic cyber hygiene practices and cybersecurity training.
 
-\subsubsection{Data Protection}
+Any entity covered by the directive must, thus, have an IT Security Policy to implement basic cyber hygiene. To strengthen their security postures, entities could rely on one of the major frameworks and standards, such as the NIST SP 800 series, ISO/IEC 27001, Mitre Att\&ck, or CIS Controls.
 
-\subsubsection{Secure Configuration of Enterprise Assets and Software}
+The directive does not mandate whether an entity chooses one of these frameworks or creates its own policies. It also does not favor or champion any of the mentioned frameworks.
 
-\subsubsection{Account Management}
+For this paper, we will focus on CIS Controls and the baselines provided by the CIS Benchmarks to fulfill Article 21's requirements.
 
-\subsubsection{Access Control Management}
+\subsection{CIS Control 4}
 
-\subsubsection{Continuous Vulnerability}
+The CIS Controls in the current version (v8) consist of 18 controls:
 
-\subsubsection{Audit Log Management}
+\begin{enumerate}
+    \item Inventory and Control of Enterprise Assets
+    \item Inventory and Control of Software Assets
+    \item Data Protection
+    \item Secure Configuration of Enterprise Assets and Software
+    \item Account Management
+    \item Access Control Management
+    \item Continuous Vulnerability
+    \item Audit Log Management
+    \item Email and Web Browser Protections
+    \item Malware Defenses
+    \item Data
+    \item Network Infrastructure
+    \item Network Monitoring and Defense
+    \item Security Awareness and Skills Training
+    \item Service Provider
+    \item Application Software Security
+    \item Incident Response
+    \item Penetration Testing\footnote{See \textit{CIS (2024)}: Critical Security Controls. \cite{cisControls}}
+\end{enumerate}
 
-\subsubsection{Email and Web Browser Protections}
+As with the NIS2 articles, many of these controls are procedural and cannot be automated. Control 4, however, Secure Configuration of Enterprise Assets and Software, is of particular importance for individual IT systems, such as Kubernetes clusters.
 
-\subsubsection{Malware Defenses}
+Control 4 consists of several subcontrols:
 
-\subsubsection{Data}
+\begin{enumerate}
+    \item Establish and Maintain a Secure Configuration Process
+    \item Establish and Maintain a Secure Configuration Process for
+Network Infrastructure
+    \item Configure Automatic Session Locking on Enterprise Assets
+    \item Implement and Manage a Firewall on Servers
+    \item Implement and Manage a Firewall on End-User Devices
+    \item Securely Manage Enterprise Assets and Software
+    \item Manage Default Accounts on Enterprise Assets and Software
+    \item Uninstall or Disable Unnecessary Services on Enterprise Assets
+and Software
+    \item Configure Trusted DNS Servers on Enterprise Assets
+    \item Enforce Automatic Device Lockout on Portable End-User Devices
+    \item Enforce Remote Wipe Capability on Portable End-User Devices
+    \item Separate Enterprise Workspaces on Mobile End-User Devices
+\end{enumerate}
 
-\subsubsection{Network Infrastructure}
+Control 4.1 strongly emphasizes the configuration process, as the default configuration for enterprise software is typically geared toward ease of deployment and use rather than security. This is where the CIS Benchmarks come into play.
 
-\subsubsection{Network Monitoring and Defense}
+\subsection{CIS Benchmarks for Kubernetes}
 
-\subsubsection{Security Awareness and Skills Training}
+In general, key security risks with default configurations are:
 
-\subsubsection{Service Provider}
+\begin{itemize}
+    \item Exposed Services and Ports
+    \item Default Accounts and Passwords
+    \item Pre-configured DNS Settings
+    \item Older or Vulnerable Protocols
+    \item Pre-installed Unnecessary Software
+\end{itemize}
 
-\subsubsection{Application Software Security}
+To mitigate these, the CIS Benchmarks provide a security baseline for enterprise software, such as Kubernetes, covering all aspects of CIS Control 4.1 and a matching IT Security Policy.\footnote{See \textit{CIS (2024)}: CIS Benchmarks List. \cite{cisBenchmarks}}
 
-\subsubsection{Incident Response}
-
-\subsubsection{Penetration Testing}
-
-\subsection{Mapping between CIS Controls and CIS Benchmark}
+There are CIS Benchmarks tailored to the currently available and supported version of Kubernetes and the major hosted versions, such as the Azure Kubernetes Engine.
 
 \subsection{CIS Kubernetes Benchmark Results}
+
+Using the Rancher CIS Scans from above against a sample RKE2 Kubernetes cluster with default configuration, we receive the following results:
+
