@@ -67,9 +67,19 @@ and Software
 
 Control 4.1 strongly emphasizes the configuration process, as the default configuration for enterprise software is typically geared toward ease of deployment and use rather than security. This is where the CIS Benchmarks come into play.
 
-\subsection{CIS Benchmarks for Kubernetes}
+\subsection{NIS2 Article 21 and CIS Control 04}
 
-In general, key security risks with default configurations are:
+Control 4.1 is the prime candidate to support and evaluate NIS2 Article 21 2(g) as it covers basic cyber hygiene and IT security policy.
+
+The requirements in Article 21 are much broader than those of CIS Control 04, but a secure configuration process is a fundamental element.
+
+Fulfilling CIS Control 04 does not imply compliance with Article 21, but noncompliance with CIS Control 04 does imply noncompliance with Article 21.
+
+Using the CIS Benchmarks will indicate whether an IT system is NIS2 compliant. Evaluating and running the CIS Benchmarks regularly will support NIS2 compliance checking and defense against cyber attacks.
+
+\subsection{CIS Benchmarks}
+
+Maintaining a Secure Configuration Process is important. Leaving default configurations unchecked might result in some of these security risks:
 
 \begin{itemize}
     \item Exposed Services and Ports
@@ -96,6 +106,6 @@ Running CIS profile 1.8 against our cluster, we receive the following results:
 \label{fig:cisRKE2}
 \end{figure}
 
-Compared to the results from an AKS downstream cluster above, we can see that there are many more failures and warnings. The difference between these two types of clusters, even though they are both Kubernetes v1.28 clusters, is that AKS is a hosted version of Kubernetes. In a hosted version of Kubernetes, the control plane is provided by the hosting entity, in this case, Microsoft Azure. An RKE2 cluster, however, does include the Kubernetes control plane and thus has a much higher attack surface and many more configuration options.
+Compared to the results from an AKS downstream cluster above, we can see that there are many more failures and warnings. The difference between these two types of clusters, even though they are both Kubernetes v1.28 clusters, is that AKS is a hosted version of Kubernetes. In a hosted version of Kubernetes, the hosting entity provides the control plane, in this case, Microsoft Azure. An RKE2 cluster, however, does include the Kubernetes control plane and thus has a much higher attack surface and many more configuration options.
 
 In the next chapter, we will look at some failures and warnings and their mitigations.
