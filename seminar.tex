@@ -24,6 +24,9 @@
 \renewcommand{\ttdefault}{pcr}
 \renewcommand{\lstlistlistingname}{Listings}
 \renewcommand{\lstlistingname}{Listing}
+\usepackage{float}
+\floatstyle{plaintop}
+\restylefloat{table}
 
 % Bildueberschrift oben und rechtsbuendig
 \captionsetup{labelfont=bf, textfont=bf}
@@ -91,6 +94,9 @@ This work is licensed under the Creative Commons Attribution 4.0 International L
 \cleardoublepage
 
 \listoffigures				% Abbildungsverzeichnis
+\cleardoublepage
+
+\listoftables               % Tabellen
 \cleardoublepage
 
 \lstlistoflistings			% Codeverzeichnis
